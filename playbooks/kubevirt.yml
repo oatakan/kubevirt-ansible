@@ -1,6 +1,6 @@
 ---
 - hosts: masters[0]
-  connection: local
+  #connection: local
   gather_facts: False
   # unset http_proxy. required for running in the CI
   environment:
