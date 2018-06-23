@@ -26,11 +26,13 @@
   stat:
     path: "{{ kubevirt_template_dir }}/kubevirt.yaml.j2"
   register: byo_template
+  delegate_to: localhost
 
 - name: Check for offline v{{ version }} templates in {{ offline_template_dir }}
   stat:
     path: "{{ offline_template_dir }}/v{{ version }}/kubevirt.yaml"
   register: offline_templates
+  delegate_to: localhost
   when: byo_template.stat.exists == False
 
 - name: Download KubeVirt Template
@@ -60,6 +62,7 @@
   with_items:
     - "{{ default_vm_templates }}"
   register: byo_vm_templates
+  delegate_to: localhost
 
 - name: Copy VM templates to /tmp
   copy:
@@ -74,6 +77,7 @@
   with_items:
     - "{{ default_vm_templates }}"
   register: offline_vm_templates
+  delegate_to: localhost
 
 - name: Copy VM templates to /tmp
   copy:

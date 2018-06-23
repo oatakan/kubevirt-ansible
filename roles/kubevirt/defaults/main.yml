@@ -8,7 +8,7 @@ kubevirt_template_dir: "{{ role_path }}/templates"
 version: 0.6.0
 docker_tag: "v{{ version }}"
 
-offline_template_dir: "/opt/apb/kubevirt-templates"
+offline_template_dir: "{{ role_path }}/templates/offline"
 
 default_vm_templates:
   - "vm-template-fedora"

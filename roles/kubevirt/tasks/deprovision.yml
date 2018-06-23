@@ -14,6 +14,7 @@
   stat:
     path: "{{ kubevirt_template_dir }}/kubevirt.yaml.j2"
   register: byo_template
+  delegate_to: localhost
   when: kubevirt_template.stat.exists == False
 
 - name: Download KubeVirt Template
